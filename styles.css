@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --whitecase1:#deb887;
+    --blackcase1:#8b4513;
+    --whitepion1:#fff;
+    --blackpion1:#000;
+    --border1: #000;;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #d4d3d3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1{
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.border{
+    display: flex;
+    height: 24px;
+    width: 100%;
+    font-size: small;
+    color: white;
+    background-color: rgb(51, 51, 49);
+    align-items: center;
+}
+.border p{
+    margin-left: 5px;
+}
+#top{
+    border-radius: 10px 10px 0 0;
+}
+#bottom{
+    border-radius: 0 0 10px 10px ;
+}
+.tour{
+    height: 15px;
+    width: 15px;
+    margin: auto 10px;
+    border-radius: 50%;
+    background-color: white;
+}
+#board{
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    /* gap: 1px; */
+    padding: 10px;
+    /* border-radius: 10px; */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.yourturn{
+    background: rgba(30, 255, 0, 0.5);
+}
+.case{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border: white 1px solid;
+}
+
+.pion{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #333;
+    transition: transform .3 ease;
+}
+
+
+
+/* Les jeux de couleurs */
+.white-pion1{
+    cursor: pointer;
+    background: var(--whitepion1);
+}
+.black-pion1{
+    cursor: pointer;
+    background: var(--blackpion1);
+}
+.board1{
+    background: var(--blackcase1);
+}
+.white-case1{
+    background: var(--whitecase1);
+}
+.black-case1{
+    background: var(--blackcase1);
+}
+/* Fin des jeux de couleurs */
+
+
+.pion.selected{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+}
+.possible-case{
+    cursor: pointer;
+    background: rgba(255, 255, 0, 0.5);
+}
+
+.info-play{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#new-game{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:background .2s ease-in-out;
+    &:hover{
+        background: #45a049;
+    }
+}
+
+footer{
+    margin-top: 20px;
+    color: #666;
+    text-align: center;
+}
+
+.dame{
+    border: 4px solid gold;
+}
+
+@keyframes capture {
+    0% {transform:  scale(1);}
+    50% {transform:  scale(1.2);}
+    100% {transform:  scale(0);}
+}
+
+.capture{
+    animation: capture .5s forwards;
+}

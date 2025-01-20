@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Jeu de dame</h1>
+        <div id="tour">
+            Tour : <span id="current-player">1 (vous)</span>
+        </div>
+    </header>
+    <main id="main">
+        <div id="top" class="border">
+            <span class="tour " id="black-tour"></span>| 
+            <p>AI (Noir): <span id="score-j2">12</span> pions</p>
+        </div>
+        <div id="board" class="board1"></div>
+        <div id="bottom" class="border">
+            <span class="tour yourturn" id="white-tour"></span>|
+            <p>Vous (Blanc): <span id="score-j1">12</span> pions</p>
+        </div>
+        <div class="info-play">
+            <button id="new-game">Nouvelle partie</button>
+        </div>
+    </main>
+    <footer>
+        <p>Jeu  de dames 2025</p>
+    </footer>
+
+    <!-- <script type="module" src="js/Board.js"></script> -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
