@@ -39,9 +39,9 @@ export default class Game {
         const col = cell.dataset.col;
 
         if (this.board.selectedPiece) {
-            if (this.board.selectPiece.row=== row && this.board.selectPiece.col === col) {
+            if (this.board.selectPiece.row === row && this.board.selectPiece.col === col) {
                 this.board.unselectPiece() // if the same selected piece, unselect this
-                return 
+                return
             }
             this.handleSelectedPieceMove(row, col) // move the selected piece
         } else if (this.board.getPiece(row, col)?.player === this.PLAYERS.HUMAN) {
@@ -72,11 +72,16 @@ export default class Game {
         const scores = this.board.calculateScores() // calculate the scores
         document.getElementById('score-j1').innerText = scores[this.PLAYERS.HUMAN]
         document.getElementById('score-j2').innerText = scores[this.PLAYERS.AI]
-        document.querySelector('.tour').classList.toggle('yourturn')
-        console.log(this.board.grid);
-        
+        const tours = document.querySelectorAll('.tour');
 
-        if (scores[this.PLAYERS.HUMAN] === 0 || scores[this.PLAYERS.AI] === 0) {  
+        // Pour chaque élément "tour", on toggle la classe "yourturn"
+        tours.forEach(tour => {
+            tour.classList.toggle('yourturn');
+        });
+        console.log(this.board.grid);
+
+
+        if (scores[this.PLAYERS.HUMAN] === 0 || scores[this.PLAYERS.AI] === 0) {
             const winner = scores[this.PLAYERS.HUMAN] > scores[this.PLAYERS.AI] ? "L'IA a gagné" : 'Vous avez gagné'
             setTimeout(() => {
                 alert(winner)
@@ -84,7 +89,7 @@ export default class Game {
         }
     }
 
-    newGame(){
+    newGame() {
         location.reload()
     }
 }
