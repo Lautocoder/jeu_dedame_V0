@@ -72,7 +72,7 @@ export default class Game {
         const scores = this.board.calculateScores() // calculate the scores
         document.getElementById('score-j1').innerText = scores[this.PLAYERS.HUMAN]
         document.getElementById('score-j2').innerText = scores[this.PLAYERS.AI]
-        document.getElementById('tour').classList.toggle('yourturn')
+        document.querySelector('.tour').classList.toggle('yourturn')
         console.log(this.board.grid);
         
 
