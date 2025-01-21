@@ -1,6 +1,7 @@
 import AI from "./Ai.js"
 import Board from "./Board.js"
 
+
 export default class Game {
     constructor() {
         this.state = {
@@ -15,6 +16,7 @@ export default class Game {
 
         this.board = new Board()
         this.ai = new AI(this)
+        this.timer = 0
         this.init()
     }
 
@@ -78,9 +80,7 @@ export default class Game {
         tours.forEach(tour => {
             tour.classList.toggle('yourturn');
         });
-        console.log(this.board.grid);
-
-
+        this.duree()
         if (scores[this.PLAYERS.HUMAN] === 0 || scores[this.PLAYERS.AI] === 0) {
             const winner = scores[this.PLAYERS.HUMAN] > scores[this.PLAYERS.AI] ? "L'IA a gagné" : 'Vous avez gagné'
             setTimeout(() => {
@@ -89,6 +89,32 @@ export default class Game {
         }
     }
 
+    duree() {
+        this.timer = 0
+        const timerDisplays = document.querySelectorAll('.timer');
+        timerDisplays.forEach(timer => {
+            timer.classList.toggle('reflexion');
+        });
+
+        const timerDisplay = document.querySelector('.reflexion');
+        // Vérifie s'il existe déjà un intervalle actif et le supprime
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+        }
+
+        // Démarre un nouvel intervalle
+        this.timerInterval = setInterval(() => {
+            this.timer++;
+            timerDisplay.textContent = this.formatTime(this.timer);
+        }, 1000);
+    }
+
+    formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
     newGame() {
         location.reload()
     }

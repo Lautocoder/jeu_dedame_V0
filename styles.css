@@ -46,9 +46,13 @@ h1{
 }
 #top{
     border-radius: 10px 10px 0 0;
+    justify-content: space-between;
+    padding: 10px;
 }
 #bottom{
     border-radius: 0 0 10px 10px ;
+    justify-content: space-between;
+    padding: 10px;
 }
 .tour{
     height: 15px;
